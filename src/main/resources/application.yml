@@ -1,11 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/springboarddb?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/springboarddb
     username: root
-    password: admin@123
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 200004602360
 
-  jpa:
+  jpa :
     hibernate:
-      ddl-auto: update
-    show-sql: true
+      ddl_auto: create

@@ -4,6 +4,7 @@ import com.springboard.dto.UserDto;
 import com.springboard.repository.UserRepository;
 import com.springboard.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
 public class UserInfoServiceImpl implements UserService {
 
     final UserRepository repository;
+    final ModelMapper mapper;
 
     @Override
-    public void registerUser(Integer id, String name, String email, String address, String city, Integer phone) {
-
+    public void registerUser(UserDto userDto) {
+        repository.save(userDto);
     }
 
     @Override
-    public void updateUser(Integer id, String name, String email, String address, String city, Integer phone) {
+    public void updateUser(UserDto userDto) {
+
 
     }
 

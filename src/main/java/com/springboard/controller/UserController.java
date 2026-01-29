@@ -15,13 +15,13 @@ public class UserController implements UserService {
     final UserService service;
 
     @PostMapping("/register-user")
-    public void registerUser(@RequestBody Integer id, String name, String email, String address, String city, Integer phone) {
-        service.registerUser(id, name, email, address, city, phone);
+    public void registerUser(@RequestBody UserDto userDto) {
+        service.registerUser(userDto);
     }
 
     @PutMapping("/update-user")
-    public void updateUser(@RequestBody Integer id, String name, String email, String address, String city, Integer phone) {
-        service.updateUser(id, name, email, address, city, phone);
+    public void updateUser(@RequestBody UserDto userDto) {
+        service.updateUser(userDto);
     }
 
     @DeleteMapping("/delete-user/{id}")

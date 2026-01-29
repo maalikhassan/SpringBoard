@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface UserService{
 
-    void registerUser(Integer id,String name,String email,String address,String city,Integer phone);
+    void registerUser(UserDto userDto);
 
-    void updateUser(Integer id,String name,String email,String address,String city,Integer phone);
+    void updateUser(UserDto userDto);
 
     void deleteUser(Integer id);
 

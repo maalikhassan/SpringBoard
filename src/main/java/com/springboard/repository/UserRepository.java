@@ -4,5 +4,8 @@ import com.springboard.dto.UserDto;
 import com.springboard.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserDto,Integer> {
+import java.util.List;
+
+public interface UserRepository extends JpaRepository<UserEntity,Integer> {
+    List<UserEntity> findAllByName(String name);
 }

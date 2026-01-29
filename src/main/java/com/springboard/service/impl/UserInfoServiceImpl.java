@@ -19,7 +19,7 @@ public class UserInfoServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(String id) {
+    public void deleteUser(Integer id) {
 
     }
 

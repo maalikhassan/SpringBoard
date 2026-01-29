@@ -10,7 +10,7 @@ public interface UserService{
 
     void updateUser(Integer id,String name,String email,String address,String city,Integer phone);
 
-    void deleteUser(String id);
+    void deleteUser(Integer id);
 
     public UserDto getUserById(Integer id);
 

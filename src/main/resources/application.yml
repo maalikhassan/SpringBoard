@@ -1,0 +1,9 @@
+Spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springBoardDb
+    username: root
+    password: mysqllol@123
+
+  jpa:
+    hibernate:
+      ddl-auto: update

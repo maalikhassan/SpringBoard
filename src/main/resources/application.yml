@@ -1,5 +1,5 @@
 spring:
-  datasorce:
+  datasource:
     url: jdbc:mysql://localhost:3306/springboarddb
     username: user
     password: 200004602360

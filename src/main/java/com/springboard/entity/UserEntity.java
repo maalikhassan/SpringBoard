@@ -1,9 +1,6 @@
 package com.springboard.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Table(name = "User")
 @Entity
 public class UserEntity {
     @Id
@@ -22,5 +20,5 @@ public class UserEntity {
     private String email;
     private String address;
     private String city;
-    private Integer phone;
+    private String phone;
 }

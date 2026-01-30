@@ -79,16 +79,17 @@ GET /Admin/get-dashboard-overview - Returns live statistics (Occupancy, Active C
 Clone the Repo
 
 Bash
-git clone [https://github.com/your-username/SpringBoard.git](https://github.com/your-username/SpringBoard.git)
+git clone https://github.com/maalikhassan/SpringBoard.git
+
 cd SpringBoard
 Configure MySQL
 
-Create a database named springboard_db.
+Create a database named springboarddb.
 
 Update src/main/resources/application.properties with your credentials:
 
 Properties
-spring.datasource.url=jdbc:mysql://localhost:3306/springboard_db
+spring.datasource.url=jdbc:mysql://localhost:3306/springboarddb
 spring.datasource.username=root
 spring.datasource.password=your_password
 Run the Application

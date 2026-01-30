@@ -27,5 +27,21 @@ public interface BookingRepository extends JpaRepository<BookingEntity,Integer> 
                           @Param("newStart") LocalDateTime newStart,
                           @Param("newEnd") LocalDateTime newEnd);
 
+    // --- NEW METHODS FOR DASHBOARD & LIVE STATUS ---
+
+    // 1. Check if specific Room is busy RIGHT NOW (For Room List)
+    @Query("SELECT CASE WHEN COUNT(b) > 0 THEN true ELSE false END " +
+            "FROM BookingEntity b " +
+            "WHERE b.roomId = :roomId " +
+            "AND b.startTime < :now " +
+            "AND b.endTime > :now")
+    boolean isRoomOccupiedNow(@Param("roomId") Integer roomId,
+                              @Param("now") LocalDateTime now);
+
+    // 2. Count TOTAL active bookings RIGHT NOW (For Dashboard Stats)
+    @Query("SELECT COUNT(b) FROM BookingEntity b " +
+            "WHERE b.startTime < :now AND b.endTime > :now")
+    long countActiveBookings(@Param("now") LocalDateTime now);
+
 }
 

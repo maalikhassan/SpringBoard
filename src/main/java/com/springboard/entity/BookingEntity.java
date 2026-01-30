@@ -32,4 +32,7 @@ public class BookingEntity {
     private LocalDateTime endTime;
     private String purpose;
     private Integer numberOfGuests;
+
+    @Column(name = "package_id")
+    private Integer packageId;
 }

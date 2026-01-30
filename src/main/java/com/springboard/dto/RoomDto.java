@@ -16,8 +16,7 @@ public class RoomDto {
     private Integer company_id;
     private RoomType type;
     private Integer capacity;
-    // "Is it busy RIGHT NOW?" (Calculated on the fly from booking table and logic and shown!)
-    private Boolean isBooked;
+    private Boolean isBooked = false;// We KEEP this, but it is not saved to DB. It is calculated on the fly.
     private Boolean isAvailable;
     private Integer package_id;
 }

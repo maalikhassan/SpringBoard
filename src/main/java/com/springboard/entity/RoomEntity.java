@@ -22,7 +22,7 @@ public class RoomEntity {
     private Integer company_id;
     private RoomType type;
     private Integer capacity;
-    private Boolean isBooked = true;
-    private Boolean isAvailable = true;
+    // DELETED: private Boolean isBooked; <--- I removed this line, but will keep in DTO for admin dash!
+    private Boolean isAvailable = true; // Keep this (Maintenance mode)
     private Integer package_id;
 }

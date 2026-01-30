@@ -4,6 +4,7 @@ import com.springboard.dto.BookingDto;
 import com.springboard.dto.RoomDto;
 import com.springboard.entity.BookingEntity;
 import com.springboard.repository.BookingRepository;
+import com.springboard.repository.PackageRepository;
 import com.springboard.repository.RoomRepository;
 import com.springboard.repository.UserRepository;
 import com.springboard.service.BookingService;
@@ -23,6 +24,7 @@ public class BookingServiceImpl implements BookingService {
 
     final UserRepository userRepository;
     final RoomRepository roomRepository;
+    final PackageRepository packageRepository;
     
     @Override
     public void addBooking(BookingDto bookingDto) {// 1. Validate User Exists
@@ -40,6 +42,11 @@ public class BookingServiceImpl implements BookingService {
         // 3. Validate Time
         if (bookingDto.getEndTime().isBefore(bookingDto.getStartTime())) {
             throw new RuntimeException("Error: End time cannot be before Start time");
+        }
+
+        // NEW: Package Validation (Optional: Only if they selected one)
+        if (bookingDto.getPackageId() != null && !packageRepository.existsById(bookingDto.getPackageId())) {
+            throw new RuntimeException("Error: Package ID " + bookingDto.getPackageId() + " not found.");
         }
 
         // 4. Validate Overlap

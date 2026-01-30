@@ -72,21 +72,24 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Integer getTotalRooms() {
-        return 0;
+        return Math.toIntExact(roomRepository.count());
     }
 
     @Override
     public Integer getActiveBooking() {
-        return 0;
+        return Math.toIntExact(roomRepository.countByIsAvailableTrue());
     }
 
     @Override
     public Integer getAvilableRooms() {
-        return 0;
+        return Math.toIntExact(roomRepository.count()-roomRepository.countByIsBookedTrue());
     }
 
     @Override
-    public Integer getOccupancy() {
-        return 0;
+    public Double getOccupancy() {
+        Integer intExact = Math.toIntExact(roomRepository.count());
+        Integer intExact1 = Math.toIntExact(roomRepository.countByIsBookedTrue());
+
+        return ((double)intExact1 / (double)intExact) * 100;
     }
 }

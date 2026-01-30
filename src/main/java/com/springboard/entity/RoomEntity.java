@@ -22,7 +22,7 @@ public class RoomEntity {
     private Integer company_id;
     private RoomType type;
     private Integer capacity;
-    private Boolean isBooked;
+    private Boolean isBooked = true;
     private Boolean isAvailable = true;
     private Integer package_id;
 }

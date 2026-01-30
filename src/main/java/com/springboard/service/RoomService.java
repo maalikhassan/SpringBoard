@@ -14,6 +14,6 @@ public interface RoomService {
     public Integer getTotalRooms();
     public Integer getActiveBooking();
     public Integer getAvilableRooms();
-    public Integer getOccupancy();
+    public Double getOccupancy();
 
 }

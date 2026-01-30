@@ -12,7 +12,7 @@ import lombok.ToString;
 public class AdminDashboardDto {
 
     private Integer totalRooms;
-    private Integer occupancy;
+    private Double occupancy;
     private Integer totalActiveBookings;
     private Integer available;
 

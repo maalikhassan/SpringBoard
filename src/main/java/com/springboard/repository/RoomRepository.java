@@ -9,4 +9,8 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<RoomEntity, Integer> {
     List<RoomEntity> findByNameContainingIgnoreCase(String name);
+
+    long countByIsAvailableTrue();
+
+    long countByIsBookedTrue();
 }

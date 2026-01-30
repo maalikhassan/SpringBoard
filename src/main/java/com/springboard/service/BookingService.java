@@ -9,4 +9,6 @@ public interface BookingService {
     void deleteBooking(Integer id);
     BookingDto searchBookingById(Integer id);
     List<BookingDto> getAllBookings();
+    List<BookingDto> getBookingsByUser(Integer userId);
+    List<BookingDto> getBookingsByRoom(Integer roomId);
 }

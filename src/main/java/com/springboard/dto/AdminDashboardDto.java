@@ -9,11 +9,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CompanyDashboardDto {
+public class AdminDashboardDto {
 
-    private String totalRooms;
-    private String occupancy;
-    private String totalActiveBookings;
-    private String available;
+    private Integer totalRooms;
+    private Integer occupancy;
+    private Integer totalActiveBookings;
+    private Integer available;
 
 }

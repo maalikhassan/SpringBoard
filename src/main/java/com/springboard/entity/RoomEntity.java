@@ -24,4 +24,5 @@ public class RoomEntity {
     private Integer capacity;
     private Boolean isBooked;
     private Boolean isAvailable = true;
+    private Integer package_id;
 }

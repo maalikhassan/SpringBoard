@@ -1,6 +1,6 @@
 Spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/springBoardDb
+    url: jdbc:mysql://localhost:3306/springBoarddb
     username: root
     password: 200004602360
 

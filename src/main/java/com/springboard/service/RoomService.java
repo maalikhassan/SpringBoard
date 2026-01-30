@@ -9,6 +9,11 @@ public interface RoomService {
     void updateRoom(RoomDto roomDto);
     void deleteRoom(Integer id);
     RoomDto searchRoomById(Integer id);
-    List<RoomDto> getAllRooms();
-    List<RoomDto> searchRoomByName(String name);
+    public List<RoomDto> getAllRooms();
+    public List<RoomDto> searchRoomByName(String name);
+    public Integer getTotalRooms();
+    public Integer getActiveBooking();
+    public Integer getAvilableRooms();
+    public Integer getOccupancy();
+
 }

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/company")
 @CrossOrigin
 @RequiredArgsConstructor
+@RequestMapping("/company")
 public class CompanyController {
 
     private final CompanyService companyService;

@@ -10,5 +10,6 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<RoomEntity, Integer> {
     List<RoomEntity> findByNameContainingIgnoreCase(String name);
 
-    long countByIsBookedTrue();
+    //long countByIsBookedTrue(); deleted this as i removed this field from entity,moved that logic to
+    // BookingRepository (countActiveBookings) and updated your Service to use the new way.
 }

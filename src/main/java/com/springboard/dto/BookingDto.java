@@ -28,4 +28,7 @@ public class BookingDto {
     private LocalDateTime endTime;
     private String purpose;
     private Integer numberOfGuests;
+
+    @JsonProperty("package_id")
+    private Integer packageId; //to also choose pkg
 }

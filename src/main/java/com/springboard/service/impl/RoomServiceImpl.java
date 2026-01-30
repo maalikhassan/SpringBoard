@@ -1,5 +1,6 @@
 package com.springboard.service.impl;
 
+import com.springboard.dto.AdminDashboardDto;
 import com.springboard.dto.RoomDto;
 import com.springboard.entity.RoomEntity;
 import com.springboard.repository.RoomRepository;
@@ -67,5 +68,25 @@ public class RoomServiceImpl implements RoomService {
         });
 
         return roomDtoList;
+    }
+
+    @Override
+    public Integer getTotalRooms() {
+        return 0;
+    }
+
+    @Override
+    public Integer getActiveBooking() {
+        return 0;
+    }
+
+    @Override
+    public Integer getAvilableRooms() {
+        return 0;
+    }
+
+    @Override
+    public Integer getOccupancy() {
+        return 0;
     }
 }

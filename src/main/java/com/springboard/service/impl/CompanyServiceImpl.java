@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CompanyImpl implements CompanyService {
+public class CompanyServiceImpl implements CompanyService {
     final CompanyRepository companyRepository;
     final ModelMapper modelMapper;
 

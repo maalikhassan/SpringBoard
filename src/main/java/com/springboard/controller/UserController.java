@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(name = "/User")
+
 public class UserController implements UserService {
 
     final UserService service;

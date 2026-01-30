@@ -77,7 +77,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Integer getActiveBooking() {
-        return Math.toIntExact(roomRepository.countByIsAvailableTrue());
+        return Math.toIntExact(roomRepository.countByIsBookedTrue());
     }
 
     @Override
@@ -90,6 +90,10 @@ public class RoomServiceImpl implements RoomService {
         Integer intExact = Math.toIntExact(roomRepository.count());
         Integer intExact1 = Math.toIntExact(roomRepository.countByIsBookedTrue());
 
-        return ((double)intExact1 / (double)intExact) * 100;
+        if (intExact==0){
+            return 0.00;
+        }else {
+            return ((double) intExact1 / (double) intExact) * 100;
+        }
     }
 }

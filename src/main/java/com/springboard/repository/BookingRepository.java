@@ -6,18 +6,26 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface BookingRepository extends JpaRepository<BookingEntity,Integer> {
     // The Logic: "Select count > 0 if any booking exists for this ROOM
     // where the NEW start time is BEFORE the EXISTING end time
     // AND the NEW end time is AFTER the EXISTING start time."
+
+//  standard names work perfectly
+    List<BookingEntity> findByCustomerId(Integer id);
+    List<BookingEntity> findByRoomId(Integer id);
+
+    // Update your @Query to use the new variable names (b.roomId, etc.)
     @Query("SELECT CASE WHEN COUNT(b) > 0 THEN true ELSE false END " +
             "FROM BookingEntity b " +
-            "WHERE b.room_id = :roomId " +
+            "WHERE b.roomId = :roomId " +
             "AND b.endTime > :newStart " +
             "AND b.startTime < :newEnd")
     boolean existsOverlap(@Param("roomId") Integer roomId,
                           @Param("newStart") LocalDateTime newStart,
                           @Param("newEnd") LocalDateTime newEnd);
+
 }
 

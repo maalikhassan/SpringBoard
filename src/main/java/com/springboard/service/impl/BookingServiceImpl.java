@@ -4,6 +4,8 @@ import com.springboard.dto.BookingDto;
 import com.springboard.dto.RoomDto;
 import com.springboard.entity.BookingEntity;
 import com.springboard.repository.BookingRepository;
+import com.springboard.repository.RoomRepository;
+import com.springboard.repository.UserRepository;
 import com.springboard.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,26 +20,40 @@ public class BookingServiceImpl implements BookingService {
 
     final ModelMapper modelMapper;
     final BookingRepository bookingRepository;
+
+    final UserRepository userRepository;
+    final RoomRepository roomRepository;
     
     @Override
-    public void addBooking(BookingDto bookingDto) {
-        // 1. Validation: "Time Travel" Check
+    public void addBooking(BookingDto bookingDto) {// 1. Validate User Exists
+        // We look for the User's "id" using the Booking's "customer_id"
+        if (!userRepository.existsById(bookingDto.getCustomerId())) {
+            throw new RuntimeException("Error: User ID " + bookingDto.getCustomerId() + " not found.");
+        }
+
+        // 2. Validate Room Exists
+        // We look for the Room's "id" using the Booking's "room_id"
+        if (!roomRepository.existsById(bookingDto.getRoomId())) {
+            throw new RuntimeException("Error: Room ID " + bookingDto.getRoomId() + " not found.");
+        }
+
+        // 3. Validate Time
         if (bookingDto.getEndTime().isBefore(bookingDto.getStartTime())) {
             throw new RuntimeException("Error: End time cannot be before Start time");
         }
 
-        // 2. Validation: "Double Booking" Check
+        // 4. Validate Overlap
         boolean isOccupied = bookingRepository.existsOverlap(
-                bookingDto.getRoom_id(),      // Check this specific room
-                bookingDto.getStartTime(),    // The new desired start
-                bookingDto.getEndTime()       // The new desired end
+                bookingDto.getRoomId(),
+                bookingDto.getStartTime(),
+                bookingDto.getEndTime()
         );
 
         if (isOccupied) {
             throw new RuntimeException("Error: Room is already booked for this time slot!");
         }
 
-        // 3. If Safe -> Save
+        // 5. Save
         BookingEntity bookingEntity = modelMapper.map(bookingDto, BookingEntity.class);
         bookingRepository.save(bookingEntity);
     }
@@ -70,5 +86,19 @@ public class BookingServiceImpl implements BookingService {
         });
 
         return bookingDtoList;
+    }
+
+    @Override
+    public List<BookingDto> getBookingsByUser(Integer userId) {
+        // Match the corrected Repository method name
+        List<BookingEntity> list = bookingRepository.findByCustomerId(userId);
+        return list.stream()
+                .map(e -> modelMapper.map(e, BookingDto.class))
+                .toList();
+    }
+
+    public List<BookingDto> getBookingsByRoom(Integer roomId) {
+        List<BookingEntity> list = bookingRepository.findByRoomId(roomId);
+        return list.stream().map(e -> modelMapper.map(e, BookingDto.class)).toList();
     }
 }

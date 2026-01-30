@@ -1,8 +1,8 @@
 Spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/springBoardDb
+    url: jdbc:mysql://localhost:3306/springBoarddb
     username: root
-    password: mysqllol@123
+    password: admin@123
 
   jpa:
     hibernate:

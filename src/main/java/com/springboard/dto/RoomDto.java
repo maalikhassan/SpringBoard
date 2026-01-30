@@ -19,4 +19,5 @@ public class RoomDto {
     // "Is it busy RIGHT NOW?" (Calculated on the fly from booking table and logic and shown!)
     private Boolean isBooked;
     private Boolean isAvailable;
+    private Integer package_id;
 }

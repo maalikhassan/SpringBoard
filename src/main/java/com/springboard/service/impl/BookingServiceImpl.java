@@ -21,6 +21,23 @@ public class BookingServiceImpl implements BookingService {
     
     @Override
     public void addBooking(BookingDto bookingDto) {
+        // 1. Validation: "Time Travel" Check
+        if (bookingDto.getEndTime().isBefore(bookingDto.getStartTime())) {
+            throw new RuntimeException("Error: End time cannot be before Start time");
+        }
+
+        // 2. Validation: "Double Booking" Check
+        boolean isOccupied = bookingRepository.existsOverlap(
+                bookingDto.getRoom_id(),      // Check this specific room
+                bookingDto.getStartTime(),    // The new desired start
+                bookingDto.getEndTime()       // The new desired end
+        );
+
+        if (isOccupied) {
+            throw new RuntimeException("Error: Room is already booked for this time slot!");
+        }
+
+        // 3. If Safe -> Save
         BookingEntity bookingEntity = modelMapper.map(bookingDto, BookingEntity.class);
         bookingRepository.save(bookingEntity);
     }

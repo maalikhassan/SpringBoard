@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 public class BookingDto {
     private Integer id;
-    // FIX: Rename to camelCase to match Entity
-    // Use @JsonProperty so Postman/Frontend still sends "customer_id"
+
     @JsonProperty("customer_id")
     private Integer customerId;
 

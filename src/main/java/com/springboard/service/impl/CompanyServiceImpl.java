@@ -31,7 +31,6 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void deleteCompany(Integer id) {
-
         companyRepository.deleteById(id);
     }
 
@@ -45,7 +44,6 @@ public class CompanyServiceImpl implements CompanyService {
             CompanyDTO companyDTO = modelMapper.map(companyEntity, CompanyDTO.class);
             companyDTOS.add(companyDTO);
         });
-
         return companyDTOS;
     }
 
@@ -53,8 +51,4 @@ public class CompanyServiceImpl implements CompanyService {
     public CompanyDTO getCompanyById(Integer id) {
         return modelMapper.map(companyRepository.findById(id), CompanyDTO.class);
     }
-
-
-
-
 }
